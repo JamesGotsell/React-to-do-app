@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import TodoItems from './TodoItems/TodoItems';
-
+import TodoItems from '../TodoItems/TodoItems';
 
 class TodoList extends Component {
   constructor(props, context) {
@@ -39,7 +38,8 @@ class TodoList extends Component {
 
           <form onSubmit={this.addItem}>
             <input ref={(a) => this._inputElement = a}
-              placeholder='enter task'></input>
+              placeholder='enter task'>
+            </input>
 
             <button type='submit'>add</button>
 
