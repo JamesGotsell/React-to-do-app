@@ -1,26 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class TodoItems extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.createTasks = this.createTasks.bind(this);
-  }
-
-  createTasks(item) {
-    return <li key={item.key}>{item.text}</li>;
-  }
-
-  render() {
-    const todoEntries = this.props.entries;
-    const listItems = todoEntries.map(this.createTasks);
-
-    return (
-      <ul className="theList">
-        {listItems}
-      </ul>
-    );
-  }
+const TodoItems = ({
+  text="",
+  key=""
+}) => {
+   return <li key={key}>
+              <p>{text}</p>
+          </li>
 }
+ 
 
-export default TodoItems;
+export default TodoItems

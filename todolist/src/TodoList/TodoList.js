@@ -7,31 +7,35 @@ class TodoList extends Component {
     super(props, context);
 
     this.state = {
-      items: []
-    };
-
+       items: [{
+        text: '',
+        key: ''
+       }]
+        
+    }
     this.addItem = this.addItem.bind(this);
 
   }
 
   addItem(e) {
-    const itemArray = this.state.items;
-
+    console.log(this._inputElement.value)
     if (this._inputElement.value !== '') {
-      itemArray.unshift({
-        text: this._inputElement.value,
-        key: Date.now()
-      });
-
-      this._inputElement.value = '';
+      this.setState(prevState => ({
+        items: [...prevState.items, {
+          text: this._inputElement.value,
+          key: Date.now()
+        }
+        ]}))
+      // this._inputElement.value = '';
+      e.preventDefault();
+       console.log(this.state);
+      }
+      
     }
-    console.log(itemArray);
-
-    e.preventDefault();
-  }
 
   render() {
-
+    const { items } = this.state;
+    console.log(items)
     return (
       <div className='todoListMain'>
 
@@ -47,7 +51,17 @@ class TodoList extends Component {
           </form>
 
         </div>
-        <TodoItems entries={this.state.items}/>
+        <ul>
+        {
+
+         items.map((item, i ) => {
+           console.log(item.key)
+          return <TodoItems text={item.text} key={item.key} />
+         })
+        
+        }
+        </ul>
+      
 
       </div>
 
