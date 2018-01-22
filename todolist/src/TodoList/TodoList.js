@@ -56,7 +56,7 @@ class TodoList extends Component {
 
          items.map((item, i ) => {
            console.log(item.key)
-          return <TodoItems text={item.text} key={item.key} />
+          return <TodoItems key={i} text={item.text} date={item.key} />
          })
         
         }
